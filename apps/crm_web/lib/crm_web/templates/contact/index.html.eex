@@ -1,0 +1,5 @@
+<ul>
+    <%= for contact <- @contacts do %>
+        <li><%= link(contact.first_name <> " " <> contact.last_name, to: Routes.contact_path(@conn, :show, contact)) %></li>
+    <% end %>
+</ul>

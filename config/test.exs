@@ -5,3 +5,13 @@ use Mix.Config
 config :crm_web, CrmWeb.Endpoint,
   http: [port: 4002],
   server: false
+
+config :crm, Crm.Repo,
+  database: "crm_test",
+  username: "postgres",
+  password: "y160Lpl0DKhSF2TiGxli",
+  hostname: "localhost",
+  port: "5432",
+  pool: Ecto.Adapters.SQL.Sandbox
+
+config :logger, level: :info

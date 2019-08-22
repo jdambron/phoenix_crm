@@ -1,0 +1,4 @@
+<h1><%= @contact.first_name %> <%= @contact.last_name %></h1>
+<%= if @contact.days_for_contact do %>
+    <p>Days before contact : <%= @contact.days_for_contact %></p>
+<% end %>

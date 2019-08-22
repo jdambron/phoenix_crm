@@ -17,6 +17,7 @@ defmodule CrmWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/contacts", ContactController, only: [:index, :show]
   end
 
   # Other scopes may use custom stacks.

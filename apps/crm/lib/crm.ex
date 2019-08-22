@@ -1,18 +1,10 @@
 defmodule Crm do
-  @moduledoc """
-  Documentation for Crm.
-  """
+  alias Crm.Contact
+  @repo Crm.Repo
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Crm.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def list_contacts do
+    @repo.all(Contact)
   end
+
+  def get_contact(id), do: @repo.get!(Contact, id)
 end
