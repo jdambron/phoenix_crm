@@ -10,9 +10,9 @@ defmodule Crm.Repo.Migrations.CreateUpdates do
       timestamps()
     end
 
-    create table("updates_contacts") do
-      add :update_id, references(:updates)
-      add :contact_id, references(:contacts)
+    create table("updates_contacts", primary_key: false) do
+      add :update_id, references(:updates), primary_key: true
+      add :contact_id, references(:contacts), primary_key: true
     end
 
     create unique_index(:updates_contacts, [:update_id, :contact_id])
