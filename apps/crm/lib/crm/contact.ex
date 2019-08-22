@@ -1,4 +1,5 @@
 defmodule Crm.Contact do
+  import Ecto.Changeset
   use Ecto.Schema
 
   schema "contacts" do
@@ -9,5 +10,12 @@ defmodule Crm.Contact do
     has_many(:notes, Crm.Note)
     many_to_many(:updates, Crm.Update, join_through: "updates_contacts")
     timestamps()
+  end
+
+  def changeset(contact, params \\ %{}) do
+    contact
+    |> cast(params, [:first_name, :last_name, :days_for_contact])
+    |> validate_required([:first_name, :last_name, :days_for_contact])
+    |> validate_number(:days_for_contact, greater_than: 0)
   end
 end

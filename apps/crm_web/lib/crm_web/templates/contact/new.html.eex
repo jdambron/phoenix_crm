@@ -1,0 +1,26 @@
+<h1>New Contact</h1>
+
+<%= form_for @contact, Routes.contact_path(@conn, :create), fn f -> %>
+    <%= if @contact.action do %>
+        <div class="alert alert-danger">
+        Unfortunately, there are errors in your
+        submission. Please correct them below.
+        </div>
+    <% end %>
+
+    <%= label f, :first_name %>
+    <%= text_input f, :first_name %>
+    <%= error_tag f, :first_name %>
+
+    <%= label f, :last_name %>
+    <%= text_input f, :last_name %>
+    <%= error_tag f, :last_name %>
+
+    <%= label f, :days_for_contact %>
+    <%= number_input f, :days_for_contact %>
+    <%= error_tag f, :days_for_contact %>
+
+    <div>
+        <%= submit "Submit" %>
+    </div>
+<% end %>
