@@ -1,0 +1,34 @@
+<h1>Create a new update</h1>
+
+<%= form_for @update, Routes.update_path(@conn, :create), fn f -> %>
+    <%= if @update.action do %>
+        <div class="alert alert-danger">
+        Unfortunately, there are errors in your
+        submission. Please correct them below.
+        </div>
+    <% end %>
+
+    <%= label f, :contacts %>
+    <%= multiple_select f, :contacts, Enum.map(@contacts, fn contact -> {CrmWeb.GlobalHelpers.get_full_name(contact), contact.id} end) %>
+    <%= error_tag f, :contacts %>
+
+    <%= label f, :activity %>
+    <%= text_input f, :activity %>
+    <%= error_tag f, :activity %>
+
+    <%= label f, :start %>
+    <%= date_select f, :start %>
+    <%= error_tag f, :start %>
+
+    <%= label f, :end %>
+    <%= date_select f, :end %>
+    <%= error_tag f, :end %>
+
+    <%= label f, :note %>
+    <%= textarea f, :note %>
+    <%= error_tag f, :note %>
+
+    <div>
+        <%= submit "Submit" %>
+    </div>
+<% end %>

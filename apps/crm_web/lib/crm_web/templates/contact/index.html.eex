@@ -1,5 +1,5 @@
 <ul>
     <%= for contact <- @contacts do %>
-        <li><%= link(contact.first_name <> " " <> contact.last_name, to: Routes.contact_path(@conn, :show, contact)) %> - <%= button("delete", to: Routes.contact_path(@conn, :delete, contact), method: :delete) %></li>
+        <li><%= link(CrmWeb.GlobalHelpers.get_full_name(contact), to: Routes.contact_path(@conn, :show, contact)) %> - <%= button("delete", to: Routes.contact_path(@conn, :delete, contact), method: :delete) %></li>
     <% end %>
 </ul>
