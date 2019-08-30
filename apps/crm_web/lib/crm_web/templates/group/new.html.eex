@@ -1,0 +1,18 @@
+<h1>New Group</h1>
+
+<%= form_for @group, Routes.group_path(@conn, :create), fn f -> %>
+    <%= if @group.action do %>
+        <div class="alert alert-danger">
+        Unfortunately, there are errors in your
+        submission. Please correct them below.
+        </div>
+    <% end %>
+
+    <%= label f, :name %>
+    <%= text_input f, :name %>
+    <%= error_tag f, :name %>
+
+    <div>
+        <%= submit "Submit" %>
+    </div>
+<% end %>

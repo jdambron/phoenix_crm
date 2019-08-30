@@ -20,6 +20,10 @@
     <%= number_input f, :days_for_contact %>
     <%= error_tag f, :days_for_contact %>
 
+    <%= label f, :group %>
+    <%= select f, :group, Enum.map(@groups, fn group -> {group.name, group.id} end) %>
+    <%= error_tag f, :group %>
+
     <div>
         <%= submit "Submit" %>
     </div>

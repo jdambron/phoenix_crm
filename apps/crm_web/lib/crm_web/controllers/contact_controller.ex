@@ -7,19 +7,20 @@ defmodule CrmWeb.ContactController do
   end
 
   def show(conn, %{"id" => id}) do
-    contact = Crm.get_contact(id)
+    contact = Crm.get_contact_with_preloads(id)
     render(conn, "show.html", contact: contact)
   end
 
   def new(conn, _params) do
     contact = Crm.new_contact()
-    render(conn, "new.html", contact: contact)
+    groups = Crm.list_groups()
+    render(conn, "new.html", contact: contact, groups: groups)
   end
 
   def create(conn, %{"contact" => contact_params}) do
     case Crm.insert_contact(contact_params) do
       {:ok, contact} -> redirect(conn, to: Routes.contact_path(conn, :show, contact))
-      {:error, contact} -> render(conn, "new.html", contact: contact)
+      {:error, contact} -> render(conn, "new.html", contact: contact, groups: Crm.list_groups())
     end
   end
 

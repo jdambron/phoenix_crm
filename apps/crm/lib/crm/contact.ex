@@ -18,4 +18,9 @@ defmodule Crm.Contact do
     |> validate_required([:first_name, :last_name, :days_for_contact])
     |> validate_number(:days_for_contact, greater_than: 0)
   end
+
+  def changeset(contact, params, group) do
+    changeset(contact, params)
+    |> put_assoc(:group, group)
+  end
 end

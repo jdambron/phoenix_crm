@@ -1,0 +1,5 @@
+<ul>
+    <%= for group <- @groups do %>
+        <li><%= group.name %></li>
+    <% end %>
+</ul>

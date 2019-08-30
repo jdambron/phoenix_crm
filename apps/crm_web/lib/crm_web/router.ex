@@ -19,6 +19,7 @@ defmodule CrmWeb.Router do
     get "/", PageController, :index
     resources "/contacts", ContactController, only: [:index, :show, :new, :create, :delete]
     resources "/updates", UpdateController, only: [:new, :create]
+    resources "/groups", GroupController, only: [:index, :new, :create]
   end
 
   # Other scopes may use custom stacks.

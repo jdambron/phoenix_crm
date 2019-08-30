@@ -2,4 +2,12 @@
 <%= if @contact.days_for_contact do %>
     <p>Days before contact : <%= @contact.days_for_contact %></p>
 <% end %>
+<h2>Updates</h2>
+<%= for update <- @contact.updates do %>
+    <p><%= update.activity %></p>
+<% end %>
+<h2>Notes</h2>
+<%= for note <- @contact.notes do %>
+    <p><%= note %></p>
+<% end %>
 <%= link("+ Add an update", to: Routes.update_path(@conn, :new)) %>
